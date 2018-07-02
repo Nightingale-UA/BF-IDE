@@ -9,46 +9,58 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.6939799331103679" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bf.cls.Controller">
+<SplitPane dividerPositions="0.6939799331103679" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bf.cls.Controller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <TextArea fx:id="inputField" layoutX="23.0" layoutY="20.0" prefHeight="122.0" prefWidth="259.0" wrapText="true" />
-            <TextField fx:id="paramsField" layoutX="23.0" layoutY="156.0" prefHeight="26.0" prefWidth="259.0" />
-            <Text layoutX="310.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parameters" />
-            <Text layoutX="327.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" />
-            <StackPane layoutX="22.0" layoutY="183.0" prefHeight="70.0" prefWidth="127.0">
+            <TextArea fx:id="inputField" layoutX="23.0" layoutY="20.0" prefHeight="122.0" prefWidth="259.0" wrapText="true" AnchorPane.bottomAnchor="381.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="20.0" />
+            <TextField fx:id="paramsField" layoutX="23.0" layoutY="156.0" prefHeight="26.0" prefWidth="259.0" AnchorPane.bottomAnchor="341.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="188.0" />
+            <TextArea fx:id="resultField" layoutX="23.0" layoutY="248.0" prefHeight="218.0" prefWidth="259.0" wrapText="true" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="188.0" />
+            <StackPane layoutX="23.0" layoutY="182.0" prefHeight="104.0" prefWidth="127.0" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="23.0">
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#run" text="Run" />
                </children>
             </StackPane>
-            <TextArea fx:id="resultField" layoutX="23.0" layoutY="248.0" prefHeight="122.0" prefWidth="259.0" wrapText="true" />
-            <Button layoutX="299.0" layoutY="194.0" mnemonicParsing="false" onMouseClicked="#identifyLanguage" prefHeight="48.0" prefWidth="97.0" text="Identify language" textAlignment="CENTER" wrapText="true" />
-            <Text layoutX="333.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input" />
-            <StackPane layoutX="154.0" layoutY="179.0" prefHeight="70.0" prefWidth="127.0">
+            <StackPane layoutX="155.0" layoutY="182.0" prefHeight="104.0" prefWidth="127.0" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="188.0">
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#clearOutput" text="Clear" />
+               </children>
+            </StackPane>
+            <StackPane layoutX="283.0" layoutY="182.0" maxWidth="1.7976931348623157E308" prefHeight="104.0" prefWidth="187.0" AnchorPane.bottomAnchor="237.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#identifyLanguage" prefHeight="48.0" prefWidth="97.0" text="Identify language" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </StackPane>
+            <StackPane layoutX="283.0" layoutY="20.0" prefHeight="122.0" prefWidth="187.0" AnchorPane.bottomAnchor="381.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Input" />
+               </children>
+            </StackPane>
+            <StackPane layoutX="283.0" layoutY="145.0" prefHeight="48.0" prefWidth="187.0" AnchorPane.bottomAnchor="330.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Parameters" />
+               </children>
+            </StackPane>
+            <StackPane layoutX="283.0" layoutY="282.0" prefHeight="218.0" prefWidth="187.0" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Result" />
                </children>
             </StackPane>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <Text layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language" textAlignment="CENTER" wrappingWidth="166.00000262260437" AnchorPane.bottomAnchor="376.93408203125" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.6226043701171875E-6" AnchorPane.topAnchor="5.93310546875" />
-            <SplitPane dividerPositions="0.7401129943502824" layoutY="34.0" prefHeight="366.0" prefWidth="179.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="129.0">
-                     <children>
-                        <ListView fx:id="languages" prefHeight="375.0" prefWidth="121.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <ListView fx:id="percents" prefHeight="375.0" prefWidth="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-            <Button layoutX="138.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#calculateChances" prefHeight="15.0" prefWidth="34.0" text="\%" />
+            <ListView fx:id="percents" prefHeight="375.0" prefWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
+            <StackPane layoutX="3.0" layoutY="6.0" prefHeight="48.0" prefWidth="145.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Language" />
+               </children>
+            </StackPane>
+            <StackPane layoutX="145.0" prefHeight="48.0" prefWidth="60.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#calculateChances" prefHeight="15.0" prefWidth="34.0" text="\%" />
+               </children>
+            </StackPane>
+            <ListView fx:id="languages" layoutY="39.0" prefHeight="436.0" prefWidth="145.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="48.0" />
          </children></AnchorPane>
   </items>
 </SplitPane>
