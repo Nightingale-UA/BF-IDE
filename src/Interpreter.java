@@ -6,7 +6,7 @@ public interface Interpreter {
     String interpret(String code, Deque<Integer> input);    
     String getOp();
 	
-	default int closingBracket(String code, int index) {
+    default int closingBracket(String code, int index) {
         int length = code.length();
         int count = 0;
         
@@ -19,7 +19,7 @@ public interface Interpreter {
         return index;
     }
 	
-	default int openingBracket(String code, int index) {        
+    default int openingBracket(String code, int index) {        
         int count = 0;
         
         for (int i = index - 1; i >= 0; i--) {
@@ -37,5 +37,5 @@ public interface Interpreter {
 			sb.append(0);
 		}
 		return sb.toString();
-	}
+    }
 }
