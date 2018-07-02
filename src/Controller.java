@@ -25,7 +25,7 @@ public class Controller implements Initializable {
     
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-		try (
+	try (
             InputStream in = getClass().getResourceAsStream("interpreter/languages.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
         ) {
@@ -49,7 +49,8 @@ public class Controller implements Initializable {
     @FXML
     void run(MouseEvent event) {
         try {
-            Interpreter interpreter = (Interpreter) Class.forName("bf.cls.interpreter." + languages.getSelectionModel().getSelectedItem()).newInstance();            
+            Interpreter interpreter = (Interpreter) Class.forName("bf.cls.interpreter." + 
+							languages.getSelectionModel().getSelectedItem()).newInstance();            
             String code = inputField.getText();
             
             Deque<Integer> params = new ArrayDeque<>();
@@ -97,7 +98,7 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             } catch (IllegalAccessException|InstantiationException e) {
                 e.printStackTrace();
-        }
+            }
         }
     }
 
