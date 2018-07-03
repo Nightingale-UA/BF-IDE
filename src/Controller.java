@@ -10,6 +10,7 @@ import java.util.regex.*;
 import java.text.DecimalFormat;
 import java.io.*;
 import java.util.stream.Collectors;
+import java.util.jar.*;
 
 public class Controller implements Initializable {
 
@@ -25,14 +26,23 @@ public class Controller implements Initializable {
     
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-	try (
-            InputStream in = getClass().getResourceAsStream("interpreter/languages.txt");
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+	String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        try (            
+            JarInputStream stream = new JarInputStream(new FileInputStream(jarPath));            
         ) {
-            langList.addAll(br.lines().collect(Collectors.toList()));           
+            for(;;) {
+                JarEntry entry = stream.getNextJarEntry();
+                if (entry == null) break;
+                
+                String name = entry.getName();				
+                if (name.contains("interpreter") && name.contains("class")) {
+                    langList.add(name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.')));
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+	
         langList.sort(Comparator.naturalOrder());
         languages.setItems(langList);
         languages.getSelectionModel().select("Brainfuck");        
