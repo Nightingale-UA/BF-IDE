@@ -23,7 +23,8 @@ public class Controller implements Initializable {
     private static final DecimalFormat PERCENT = new DecimalFormat("#%");
     private ObservableList<String> langList = FXCollections.observableArrayList();
     private ObservableList<String> percList = FXCollections.observableArrayList();
-    
+	
+    private String interpreterPackageName = "bf.cls.interpreter."; 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
 	String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -34,8 +35,10 @@ public class Controller implements Initializable {
                 JarEntry entry = stream.getNextJarEntry();
                 if (entry == null) break;
                 
-                String name = entry.getName();				
-                if (name.contains("interpreter") && name.contains("class")) {
+                String name = entry.getName();
+		String i = "interpreter";
+		String c = "class";
+                if (name.contains(i) && name.contains(c)) {
                     langList.add(name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.')));
                 }
             }
@@ -57,9 +60,9 @@ public class Controller implements Initializable {
     }
     
     @FXML
-    void run(MouseEvent event) {
+    void run(MouseEvent event) {	
         try {
-            Interpreter interpreter = (Interpreter) Class.forName("bf.cls.interpreter." + 
+            Interpreter interpreter = (Interpreter) Class.forName(interpreterPackageName + 
 							languages.getSelectionModel().getSelectedItem()).newInstance();            
             String code = inputField.getText();
             
@@ -87,7 +90,7 @@ public class Controller implements Initializable {
         int size = langList.size();
         for (int i = 0; i < size; i++) {
             try {
-                Interpreter interpreter = (Interpreter) Class.forName("bf.cls.interpreter." + langList.get(i)).newInstance();                
+                Interpreter interpreter = (Interpreter) Class.forName(interpreterPackageName + langList.get(i)).newInstance();                
                 String op = interpreter.getOp();                              
                 
                 double countDistinct = (double)code.chars()
