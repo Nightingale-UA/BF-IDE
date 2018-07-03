@@ -1,5 +1,0 @@
-Brainfuck
-Boolfuck
-Smallfuck
-MiniStringfuck
-Swapfuck
