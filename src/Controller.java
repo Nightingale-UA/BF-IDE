@@ -25,9 +25,12 @@ public class Controller implements Initializable {
     private ObservableList<String> percList = FXCollections.observableArrayList();
 	
     private String interpreterPackageName = "bf.cls.interpreter."; 
+
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
 	String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+	String ir = "interpreter";
+	String cs = "class";
         try (            
             JarInputStream stream = new JarInputStream(new FileInputStream(jarPath));            
         ) {
@@ -36,9 +39,8 @@ public class Controller implements Initializable {
                 if (entry == null) break;
                 
                 String name = entry.getName();
-		String i = "interpreter";
-		String c = "class";
-                if (name.contains(i) && name.contains(c)) {
+		
+                if (name.contains(ir) && name.contains(cs)) {
                     langList.add(name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.')));
                 }
             }
