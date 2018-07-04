@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 import java.util.regex.*;
 import java.text.DecimalFormat;
 import java.io.*;
-import java.util.stream.Collectors;
 import java.util.jar.*;
 
 public class Controller implements Initializable {
@@ -29,8 +28,8 @@ public class Controller implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
 	String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-	String ir = "interpreter";
-	String cs = "class";
+	String interpreterPathName = interpreterPackageName.replaceAll("\\.","/");
+	
         try (            
             JarInputStream stream = new JarInputStream(new FileInputStream(jarPath));            
         ) {
@@ -40,7 +39,7 @@ public class Controller implements Initializable {
                 
                 String name = entry.getName();
 		
-                if (name.contains(ir) && name.contains(cs)) {
+                if (name.contains(interpreterPathName) && !entry.isDirectory()) {
                     langList.add(name.substring(name.lastIndexOf('/') + 1, name.lastIndexOf('.')));
                 }
             }
