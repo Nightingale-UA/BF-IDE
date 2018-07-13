@@ -36,9 +36,7 @@ public class Helper {
     private static String cCode;
     private static String resultedString;
     private static String currentLanguage = "Brainfuck";
-    private static boolean codeChecked = false;
-
-    private static int lineCount = 1;
+    private static boolean codeChecked = false;    
 
     static int calculateChances(String code) {
         int size = langList.size();
@@ -282,11 +280,5 @@ public class Helper {
     }
     static String getCurrentLanguage() {
         return currentLanguage;
-    }
-    static int getLineCount() {
-        return lineCount;
-    }
-    static void changeLineCount(int n) {
-        lineCount += n;
     }
 }
