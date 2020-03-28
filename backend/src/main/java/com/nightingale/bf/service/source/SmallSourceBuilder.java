@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.service.SmallSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.SmallSpec;
 
 public class SmallSourceBuilder extends SmallSpec implements SourceBuilder {
     @Override

@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.service.LangSpec;
+import com.nightingale.bf.model.spec.LangSpec;
 
 public interface Optimizer extends LangSpec {
     /**

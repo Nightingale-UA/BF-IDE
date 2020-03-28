@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.service.MiniStringSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.MiniStringSpec;
 
 public class MiniStringSourceBuilder extends MiniStringSpec
         implements SourceBuilder {

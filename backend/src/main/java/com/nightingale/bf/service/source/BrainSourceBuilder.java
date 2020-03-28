@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.service.BrainSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.BrainSpec;
 
 public class BrainSourceBuilder extends BrainSpec implements SourceBuilder {
     @Override

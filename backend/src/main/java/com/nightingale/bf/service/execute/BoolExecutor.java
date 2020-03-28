@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.execute;
 
-import com.nightingale.bf.service.BoolSpec;
+import com.nightingale.bf.model.spec.BoolSpec;
 
 import java.util.Deque;
 

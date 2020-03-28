@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.service.LangSpec;
+import com.nightingale.bf.model.spec.LangSpec;
 
 public interface Transpiler extends LangSpec {
     /**

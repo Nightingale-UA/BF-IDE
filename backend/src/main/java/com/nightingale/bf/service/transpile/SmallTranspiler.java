@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.service.SmallSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.SmallSpec;
 
 public class SmallTranspiler extends SmallSpec implements Transpiler {
     @Override

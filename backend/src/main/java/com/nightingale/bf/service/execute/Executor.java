@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.execute;
 
-import com.nightingale.bf.service.LangSpec;
+import com.nightingale.bf.model.spec.LangSpec;
 
 import java.util.Deque;
 

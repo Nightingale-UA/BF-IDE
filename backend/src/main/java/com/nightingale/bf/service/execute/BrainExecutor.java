@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.execute;
 
-import com.nightingale.bf.service.BrainSpec;
+import com.nightingale.bf.model.spec.BrainSpec;
 
 import java.util.Deque;
 

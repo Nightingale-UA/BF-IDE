@@ -1,9 +1,6 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.service.BrainSpec;
-import com.nightingale.bf.service.execute.Executor;
-
-import java.util.Deque;
+import com.nightingale.bf.model.spec.BrainSpec;
 
 public class BrainOptimizer extends BrainSpec implements Optimizer {
     @Override

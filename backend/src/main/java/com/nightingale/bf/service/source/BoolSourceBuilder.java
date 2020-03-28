@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.service.BoolSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.BoolSpec;
 
 public class BoolSourceBuilder extends BoolSpec implements SourceBuilder {
     @Override

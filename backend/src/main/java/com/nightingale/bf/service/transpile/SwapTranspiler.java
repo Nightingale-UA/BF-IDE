@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.service.SwapSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
+import com.nightingale.bf.model.spec.SwapSpec;
 
 public class SwapTranspiler extends SwapSpec implements Transpiler {
     @Override

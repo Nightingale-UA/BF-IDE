@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.execute;
 
-import com.nightingale.bf.service.SwapSpec;
+import com.nightingale.bf.model.spec.SwapSpec;
 
 import java.util.Deque;
 

@@ -1,9 +1,6 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.service.BoolSpec;
-import com.nightingale.bf.service.execute.Executor;
-
-import java.util.Deque;
+import com.nightingale.bf.model.spec.BoolSpec;
 
 public class BoolOptimizer extends BoolSpec implements Optimizer {
     @Override
