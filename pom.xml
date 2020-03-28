@@ -4,7 +4,7 @@
   <groupId>com.nightingale.bf</groupId>
   <artifactId>bf-ide</artifactId>
   <packaging>jar</packaging>
-  <version>0.3</version>
+  <version>0.0.3</version>
   <name>bf-ide</name>
   <url>http://maven.apache.org</url>
   <properties>
