@@ -8,5 +8,11 @@ public interface Optimizer extends LangSpec {
      * @param code String BF source code
      * @return String optimized version of input
      */
-    String optimize(String code);
+    default String optimize(String code) {
+        var result = code;
+        while (result.matches(".*(" + getOptimizationPattern() + ").*"))	{
+            result = result.replaceAll(getOptimizationPattern(), "");
+        }
+        return result;
+    }
 }

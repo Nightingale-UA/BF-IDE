@@ -2,9 +2,9 @@ package com.nightingale.bf.model.spec;
 
 import com.nightingale.bf.model.LangType;
 
-public abstract class BrainSpec implements LangSpec {
+public class BrainSpec extends BaseSpec {
     @Override
-    public LangType getType() {
+    protected LangType getType() {
         return LangType.BRAIN;
     }
 }

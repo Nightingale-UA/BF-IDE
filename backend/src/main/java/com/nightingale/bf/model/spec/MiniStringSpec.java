@@ -2,9 +2,9 @@ package com.nightingale.bf.model.spec;
 
 import com.nightingale.bf.model.LangType;
 
-public abstract class MiniStringSpec implements LangSpec {
+public class MiniStringSpec extends BaseSpec {
     @Override
-    public LangType getType() {
+    protected LangType getType() {
         return LangType.MINI_STRING;
     }
 }
