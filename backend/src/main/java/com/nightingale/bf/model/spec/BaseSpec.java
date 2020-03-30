@@ -1,9 +1,8 @@
 package com.nightingale.bf.model.spec;
 
 import com.nightingale.bf.model.LangType;
-import com.nightingale.bf.service.optimize.Optimizer;
 
-public abstract class BaseSpec implements Optimizer {
+public abstract class BaseSpec implements LangSpec {
 
     protected abstract LangType getType();
 

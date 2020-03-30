@@ -1,8 +1,6 @@
 package com.nightingale.bf.service;
 
-import com.nightingale.bf.model.spec.BaseSpec;
-
-public abstract class BaseBitService extends BaseSpec {
+public abstract class BaseBitService extends BaseService {
     /**
      * Assumed length of bit input.
      */

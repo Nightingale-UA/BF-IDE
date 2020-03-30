@@ -1,5 +1,9 @@
 package com.nightingale.bf.model.spec;
 
+import com.nightingale.bf.model.token.LangSpecificToken;
+
+import java.util.Collection;
+
 /**
  * Interface for getting common language details.
  */
@@ -21,4 +25,6 @@ public interface LangSpec {
      * @return String pattern
      */
     String getOptimizationPattern();
+
+    Collection<LangSpecificToken> getAvailableTokens();
 }
