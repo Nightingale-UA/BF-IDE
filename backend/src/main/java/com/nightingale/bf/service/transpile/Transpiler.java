@@ -14,8 +14,11 @@ public interface Transpiler extends LangSpec {
     String END_LINE = "\n";
     String ADD = " += ";
     String SUBTRACT = " -= ";
-    String PRINT_CHAR = "putchar(";
-    String READ_CHAR = " = getchar()";
+    String FLIP = " ^= 1";
+    String PRINT_CHAR = "printChar(";
+    String PRINT_BIT = "printBit(";
+    String READ_CHAR = " = readChar()";
+    String READ_BIT = " = readBit()";
     String CLOSING_BRACKET = ")";
     String OPENING_CURVY_BRACKET = " {";
     String CLOSING_CURVY_BRACKET = "}";

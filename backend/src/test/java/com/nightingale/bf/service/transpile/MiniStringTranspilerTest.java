@@ -11,30 +11,30 @@ public class MiniStringTranspilerTest {
     public void shouldTranspileToHighLevel() {
         assertEquals(
             "*p += 72\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 29\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 7\n" +
-                "putchar(*p)\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 3\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 189\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 244\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 55\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 24\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 3\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 250\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 248\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 189\n" +
-                "putchar(*p)\n",
+                "printChar(*p)\n",
             transpiler.toHighLevel("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++." +
                 "+++++++++++++++++++++++++++++.+++++++..+++." +
                 "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++." +

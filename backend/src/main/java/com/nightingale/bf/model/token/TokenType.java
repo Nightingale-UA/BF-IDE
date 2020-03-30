@@ -1,5 +1,5 @@
 package com.nightingale.bf.model.token;
 
 public enum TokenType {
-    INCR, DECR, IN, OUT, RIGHT, LEFT, START, END
+    INCR, DECR, FLIP, IN, OUT, RIGHT, LEFT, START, END
 }

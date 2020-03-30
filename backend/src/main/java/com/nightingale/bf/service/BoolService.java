@@ -1,8 +1,10 @@
 package com.nightingale.bf.service;
 
 import com.nightingale.bf.model.LangType;
+import com.nightingale.bf.model.token.BoolToken;
 import com.nightingale.bf.model.token.LangSpecificToken;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 public class BoolService extends BaseBitService {
@@ -13,6 +15,6 @@ public class BoolService extends BaseBitService {
 
     @Override
     public Collection<LangSpecificToken> getAvailableTokens() {
-        return null;
+        return Arrays.asList(BoolToken.values());
     }
 }

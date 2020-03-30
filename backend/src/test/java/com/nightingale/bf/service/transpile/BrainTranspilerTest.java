@@ -29,30 +29,30 @@ public class BrainTranspilerTest {
                 "}\n" +
                 "p += 1\n" +
                 "*p -= 1\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "p += 3\n" +
                 "*p += 1\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "p += 2\n" +
-                "putchar(*p)\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 3\n" +
                 "while (*p) {\n" +
-                "    putchar(*p)\n" +
+                "    printChar(*p)\n" +
                 "    p += 1\n" +
                 "}\n" +
                 "p -= 4\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p += 3\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "*p -= 6\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "p -= 2\n" +
                 "*p -= 1\n" +
-                "putchar(*p)\n" +
+                "printChar(*p)\n" +
                 "p += 4\n" +
                 "*p += 1\n" +
-                "putchar(*p)\n",
+                "printChar(*p)\n",
             transpiler.toHighLevel("+[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.")
         );
     }
