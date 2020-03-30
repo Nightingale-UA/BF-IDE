@@ -1,4 +1,4 @@
-package com.nightingale.bf.ctrl;
+package com.nightingale.bf.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,17 +13,10 @@ import java.util.jar.JarInputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.nightingale.bf.Interpreter;
+import com.nightingale.bf.interpreter.Interpreter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SplitPane;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 public class Helper {
 
@@ -31,12 +24,6 @@ public class Helper {
     private static ObservableList<String> langList;
     private static ObservableList<String> percList; 
     private static final DecimalFormat PERCENT = new DecimalFormat("#%");
-    
-    private static String bfCode;
-    private static String cCode;
-    private static String resultedString;
-    private static String currentLanguage = "Brainfuck";
-    private static boolean codeChecked = false;    
 
     static int calculateChances(String code) {
         int size = langList.size();
@@ -75,18 +62,6 @@ public class Helper {
         return percList.indexOf(String.valueOf(max) + "%");
     }
 
-    static void callPane(String name, MouseEvent event) {
-        try {
-            SplitPane pane = FXMLLoader.load(Helper.class.getResource(name));
-            Scene oldScene = ((Node) event.getSource()).getScene();
-            Stage stage = (Stage)oldScene.getWindow();
-
-            stage.setScene(new Scene(pane,oldScene.getWidth(),oldScene.getHeight()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }        
-    }
-
     static void generateLists() {
         langList = FXCollections.observableArrayList();
         percList = FXCollections.observableArrayList();
@@ -117,20 +92,6 @@ public class Helper {
         for (int i = 0; i < size; i++) {
             percList.add(init);
         }        
-    }    
-
-    static Interpreter getInterpreterFromList(ListView<String> languages) {
-        try {
-            String interpreterName = languages.getSelectionModel().getSelectedItem();
-            Interpreter interpreter = (Interpreter) Class.forName(INTERPRETER_PACKAGE_NAME 
-                                        + interpreterName).newInstance();
-            return interpreter;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException|InstantiationException e) {
-            e.printStackTrace();
-        }
-        return new com.nightingale.bf.interpreter.Brainfuck();        
     }
 
     static String format(String code) { 
@@ -243,42 +204,5 @@ public class Helper {
             sb.append(' ');
         }
         return sb.toString();
-    }
-
-    static ObservableList<String> getLangList() {
-        return langList;
-    }
-    static ObservableList<String> getPercList() {
-        return percList;
-    }
-    static String getBfCode() {
-        return bfCode;
-    }
-    static String getCCode() {
-        return cCode;
-    }
-    static String getResultedString() {
-        return resultedString;
-    }
-    static void setBfCode(String string) {
-        bfCode = string;
-    }
-    static void setCCode(String string) {
-        cCode = string;
-    }
-    static void setResultedString(String string) {
-        resultedString = string;
-    }
-    static boolean isChecked() {
-        return codeChecked;
-    }
-    static void setCodeChecked(boolean b) {
-        codeChecked = b;
-    }
-    static void setCurrentLanguage(String name) {
-        currentLanguage = name;
-    }
-    static String getCurrentLanguage() {
-        return currentLanguage;
     }
 }

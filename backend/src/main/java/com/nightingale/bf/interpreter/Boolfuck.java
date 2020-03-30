@@ -5,8 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.nightingale.bf.Interpreter;
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 
 public class Boolfuck implements Interpreter {	
 	private static final String OP = "><+,;[]";

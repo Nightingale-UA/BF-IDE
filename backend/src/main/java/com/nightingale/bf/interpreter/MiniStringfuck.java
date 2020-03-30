@@ -2,8 +2,7 @@ package com.nightingale.bf.interpreter;
 
 import java.util.Deque;
 
-import com.nightingale.bf.Interpreter;
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 
 public class MiniStringfuck implements Interpreter {
 	private static final String OP = "+.";

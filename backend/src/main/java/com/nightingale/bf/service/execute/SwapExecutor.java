@@ -1,12 +1,10 @@
 package com.nightingale.bf.service.execute;
 
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 import com.nightingale.bf.service.SwapService;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 public class SwapExecutor extends SwapService implements Executor {
     @Override

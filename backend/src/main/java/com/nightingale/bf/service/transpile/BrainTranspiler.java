@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 import com.nightingale.bf.service.BrainService;
 
 public class BrainTranspiler extends BrainService implements Transpiler {

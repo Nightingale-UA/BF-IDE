@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-import com.nightingale.bf.Interpreter;
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 
 public class Swapfuck implements Interpreter {
 	private static final String OP = "@><[].";

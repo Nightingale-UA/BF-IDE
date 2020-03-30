@@ -5,8 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.nightingale.bf.Interpreter;
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 
 public class Smallfuck implements Interpreter {
 	private static final String OP = "><*[]";

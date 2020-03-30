@@ -1,4 +1,4 @@
-package com.nightingale.bf;
+package com.nightingale.bf.interpreter;
 
 import java.util.Deque;
 

@@ -1,6 +1,6 @@
 package com.nightingale.bf.service;
 
-import com.nightingale.bf.ctrl.Helper;
+import com.nightingale.bf.utils.Helper;
 import com.nightingale.bf.model.spec.BaseSpec;
 import com.nightingale.bf.model.token.LangSpecificToken;
 import com.nightingale.bf.model.token.TokenData;
