@@ -1,12 +1,12 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.model.spec.BrainSpec;
+import com.nightingale.bf.service.BrainService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrainOptimizerTest {
-    private final Optimizer optimizer = new BrainSpec();
+    private final Optimizer optimizer = new BrainService();
 
     @Test
     public void shouldOptimizeAddSubtract() {

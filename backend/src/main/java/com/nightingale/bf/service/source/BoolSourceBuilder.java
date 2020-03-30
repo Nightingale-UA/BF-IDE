@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.model.spec.BoolSpec;
+import com.nightingale.bf.service.BoolService;
 
-public class BoolSourceBuilder extends BoolSpec implements SourceBuilder {
+public class BoolSourceBuilder extends BoolService implements SourceBuilder {
     @Override
     public String fromExecutionResult(String target) {
         return null;

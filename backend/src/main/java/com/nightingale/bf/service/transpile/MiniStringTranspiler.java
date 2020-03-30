@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.model.spec.MiniStringSpec;
+import com.nightingale.bf.service.MiniStringService;
 
-public class MiniStringTranspiler extends MiniStringSpec implements Transpiler {
+public class MiniStringTranspiler extends MiniStringService implements Transpiler {
     @Override
     public String toHighLevel(String code) {
         return null;

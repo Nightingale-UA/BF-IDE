@@ -1,12 +1,12 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.model.spec.SwapSpec;
+import com.nightingale.bf.service.SwapService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwapOptimizerTest {
-    private final Optimizer optimizer = new SwapSpec();
+    private final Optimizer optimizer = new SwapService();
 
     @Test
     public void shouldOptimizeSwapping() {

@@ -1,12 +1,12 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.model.spec.SmallSpec;
+import com.nightingale.bf.service.SmallService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SmallOptimizerTest {
-    private final Optimizer optimizer = new SmallSpec();
+    private final Optimizer optimizer = new SmallService();
 
     @Test
     public void shouldOptimizeFlipping() {

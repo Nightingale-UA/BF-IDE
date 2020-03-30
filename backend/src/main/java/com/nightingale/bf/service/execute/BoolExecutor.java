@@ -1,9 +1,10 @@
 package com.nightingale.bf.service.execute;
 
 import com.nightingale.bf.ctrl.Helper;
-import com.nightingale.bf.model.spec.BoolSpec;
+import com.nightingale.bf.service.BoolService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,22 +12,20 @@ import java.util.List;
 import static java.util.Optional.ofNullable;
 
 @Service
-public class BoolExecutor extends BoolSpec implements Executor {
+public class BoolExecutor extends BoolService implements Executor {
     @Override
     public String execute(String code, Deque<Integer> input) {
         StringBuilder output = new StringBuilder();
-        List<Integer> tape = new LinkedList<>();
-        tape.add(0);
+        List<Integer> tape = new LinkedList<>(Collections.singletonList(0));
         String opt = optimize(code);
 
         int countIn = 0;
         int nextIn = getNextIn(input);
         int countOut = 0;
         int nextOut = 0;
-
         int pointer = 0;
-        int length = opt.length();
-        for (int i = 0; i < length; i++) {
+
+        for (int i = 0; i < opt.length(); i++) {
             switch (opt.charAt(i)) {
                 case '>':
                     pointer++;

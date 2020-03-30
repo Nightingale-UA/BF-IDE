@@ -1,12 +1,12 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.model.spec.BoolSpec;
+import com.nightingale.bf.service.BoolService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoolOptimizerTest {
-    private final Optimizer optimizer = new BoolSpec();
+    private final Optimizer optimizer = new BoolService();
 
     @Test
     public void shouldOptimizeFlipping() {

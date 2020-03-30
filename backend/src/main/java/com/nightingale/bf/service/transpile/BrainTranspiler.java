@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.model.spec.BrainSpec;
+import com.nightingale.bf.service.BrainService;
 
-public class BrainTranspiler extends BrainSpec implements Transpiler {
+public class BrainTranspiler extends BrainService implements Transpiler {
     @Override
     public String toHighLevel(String code) {
         return null;

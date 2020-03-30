@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.model.spec.SmallSpec;
+import com.nightingale.bf.service.SmallService;
 
-public class SmallTranspiler extends SmallSpec implements Transpiler {
+public class SmallTranspiler extends SmallService implements Transpiler {
     @Override
     public String toHighLevel(String code) {
         return null;

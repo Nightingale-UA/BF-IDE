@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.transpile;
 
-import com.nightingale.bf.model.spec.BoolSpec;
+import com.nightingale.bf.service.BoolService;
 
-public class BoolTranspiler extends BoolSpec implements Transpiler {
+public class BoolTranspiler extends BoolService implements Transpiler {
     @Override
     public String toHighLevel(String code) {
         return null;

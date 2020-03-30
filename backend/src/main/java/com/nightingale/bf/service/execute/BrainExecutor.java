@@ -1,7 +1,7 @@
 package com.nightingale.bf.service.execute;
 
 import com.nightingale.bf.ctrl.Helper;
-import com.nightingale.bf.model.spec.BrainSpec;
+import com.nightingale.bf.service.BrainService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class BrainExecutor extends BrainSpec implements Executor {
+public class BrainExecutor extends BrainService implements Executor {
     @Override
     public String execute(String code, Deque<Integer> input) {
         List<Integer> tape = new LinkedList<>(Collections.singletonList(0));
@@ -34,12 +34,12 @@ public class BrainExecutor extends BrainSpec implements Executor {
                     }
                     break;
                 case '+':
-                    int temp = (tape.get(pointer) + 1) % 256;
+                    int temp = (tape.get(pointer) + 1) % (MAX_VALUE + 1);
                     tape.set(pointer,temp);
                     break;
                 case '-':
                     temp = tape.get(pointer) - 1;
-                    tape.set(pointer, (temp < 0) ? 255 : temp);
+                    tape.set(pointer, (temp < 0) ? MAX_VALUE : temp);
                     break;
                 case ',':
                     tape.set(pointer, input.pop());

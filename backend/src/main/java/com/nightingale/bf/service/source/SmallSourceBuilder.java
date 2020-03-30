@@ -1,8 +1,8 @@
 package com.nightingale.bf.service.source;
 
-import com.nightingale.bf.model.spec.SmallSpec;
+import com.nightingale.bf.service.SmallService;
 
-public class SmallSourceBuilder extends SmallSpec implements SourceBuilder {
+public class SmallSourceBuilder extends SmallService implements SourceBuilder {
     @Override
     public String fromExecutionResult(String target) {
         return null;
