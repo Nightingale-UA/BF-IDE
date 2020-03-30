@@ -2,7 +2,9 @@ package com.nightingale.bf.service;
 
 import com.nightingale.bf.model.LangType;
 import com.nightingale.bf.model.token.LangSpecificToken;
+import com.nightingale.bf.model.token.SwapToken;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 public class SwapService extends BaseBitService {
@@ -13,6 +15,6 @@ public class SwapService extends BaseBitService {
 
     @Override
     public Collection<LangSpecificToken> getAvailableTokens() {
-        return null;
+        return Arrays.asList(SwapToken.values());
     }
 }

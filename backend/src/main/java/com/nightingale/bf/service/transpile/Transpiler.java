@@ -23,6 +23,8 @@ public interface Transpiler extends LangSpec {
     String OPENING_CURVY_BRACKET = " {";
     String CLOSING_CURVY_BRACKET = "}";
     String WHILE = "while (";
+    String STORE_BIT = "storeBit(";
+    String GET_STORED_BIT = " = getStoredBit()";
 
     /**
      * Transpiles provided BF code to higher level language.
