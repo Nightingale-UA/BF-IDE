@@ -10,6 +10,6 @@ public class SmallTranspiler extends SmallService implements Transpiler {
 
     @Override
     public String fromHighLevel(String highLevelCode) {
-        return null;
+        return "Not implemented yet";
     }
 }

@@ -10,6 +10,6 @@ public class SwapTranspiler extends SwapService implements Transpiler {
 
     @Override
     public String fromHighLevel(String highLevelCode) {
-        return null;
+        return "Not implemented yet";
     }
 }

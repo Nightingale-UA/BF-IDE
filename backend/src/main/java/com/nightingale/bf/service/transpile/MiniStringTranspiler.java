@@ -10,6 +10,6 @@ public class MiniStringTranspiler extends MiniStringService implements Transpile
 
     @Override
     public String fromHighLevel(String highLevelCode) {
-        return null;
+        return "Not implemented yet";
     }
 }
