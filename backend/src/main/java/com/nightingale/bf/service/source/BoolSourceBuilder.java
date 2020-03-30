@@ -5,6 +5,6 @@ import com.nightingale.bf.service.BoolService;
 public class BoolSourceBuilder extends BoolService implements SourceBuilder {
     @Override
     public String fromExecutionResult(String target) {
-        return null;
+        return "Not implemented yet";
     }
 }

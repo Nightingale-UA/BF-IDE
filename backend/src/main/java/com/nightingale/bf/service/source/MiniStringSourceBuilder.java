@@ -6,6 +6,6 @@ public class MiniStringSourceBuilder extends MiniStringService
         implements SourceBuilder {
     @Override
     public String fromExecutionResult(String target) {
-        return null;
+        return "Not implemented yet";
     }
 }
