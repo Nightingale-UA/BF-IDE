@@ -1,6 +1,5 @@
 package com.nightingale.bf.service.optimize;
 
-import com.nightingale.bf.service.optimize.BrainOptimizer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

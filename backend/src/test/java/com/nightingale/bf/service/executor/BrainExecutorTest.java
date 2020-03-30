@@ -2,7 +2,6 @@ package com.nightingale.bf.service.executor;
 
 import com.nightingale.bf.service.execute.BrainExecutor;
 import com.nightingale.bf.service.execute.Executor;
-import com.nightingale.bf.service.optimize.BrainOptimizer;
 import com.nightingale.bf.service.optimize.Optimizer;
 import org.junit.jupiter.api.Test;
 

@@ -2,7 +2,6 @@ package com.nightingale.bf.service.execute;
 
 import com.nightingale.bf.ctrl.Helper;
 import com.nightingale.bf.model.spec.BrainSpec;
-import com.nightingale.bf.service.optimize.Optimizer;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -12,18 +11,11 @@ import java.util.List;
 
 @Service
 public class BrainExecutor extends BrainSpec implements Executor {
-
-    private final Optimizer brainOptimizer;
-
-    public BrainExecutor(Optimizer brainOptimizer) {
-        this.brainOptimizer = brainOptimizer;
-    }
-
     @Override
     public String execute(String code, Deque<Integer> input) {
         List<Integer> tape = new LinkedList<>(Collections.singletonList(0));
         StringBuilder output = new StringBuilder();
-        String optimized = brainOptimizer.optimize(code);
+        String optimized = optimize(code);
         int pointer = 0;
 
         for (int i = 0; i < optimized.length(); i++) {
