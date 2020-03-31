@@ -12,11 +12,6 @@ public abstract class BaseSpec implements LangSpec {
     }
 
     @Override
-    public String getOperations() {
-        return getType().getOperations();
-    }
-
-    @Override
     public String getOptimizationPattern() {
         return getType().getUseless();
     }
