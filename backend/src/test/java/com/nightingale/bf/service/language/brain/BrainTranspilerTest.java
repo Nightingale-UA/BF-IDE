@@ -1,13 +1,12 @@
 package com.nightingale.bf.service.language.brain;
 
 import com.nightingale.bf.model.language.brain.Spec;
-import com.nightingale.bf.service.Transpiler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrainTranspilerTest {
-    private final Transpiler transpiler = new TranspilerImpl(
+    private final com.nightingale.bf.service.transpile.Transpiler transpiler = new Transpiler(
         new Operations(new Spec()), new Optimizer(new Spec()));
 
     @Test

@@ -1,14 +1,12 @@
 package com.nightingale.bf.service.language.small;
 
 import com.nightingale.bf.model.language.small.Spec;
-import com.nightingale.bf.service.Transpiler;
-import com.nightingale.bf.service.language.small.TranspilerImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SmallTranspilerTest {
-    private final Transpiler transpiler = new TranspilerImpl(
+    private final com.nightingale.bf.service.transpile.Transpiler transpiler = new Transpiler(
         new Operations(new Spec()), new Optimizer(new Spec()));
 
     @Test

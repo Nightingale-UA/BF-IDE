@@ -1,13 +1,12 @@
 package com.nightingale.bf.service.language.swap;
 
 import com.nightingale.bf.model.language.swap.Spec;
-import com.nightingale.bf.service.Transpiler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwapTranspilerTest {
-    private final Transpiler transpiler = new TranspilerImpl(
+    private final com.nightingale.bf.service.transpile.Transpiler transpiler = new Transpiler(
         new Operations(new Spec()), new Optimizer(new Spec()));
 
     @Test
