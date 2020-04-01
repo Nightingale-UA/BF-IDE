@@ -4,9 +4,10 @@ import com.nightingale.bf.model.operation.OperationToken;
 import com.nightingale.bf.model.operation.OperationType;
 import com.nightingale.bf.service.operation.Operations;
 import com.nightingale.bf.service.optimize.Optimizer;
-import com.nightingale.bf.utils.Helper;
 
 import java.util.Iterator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 abstract class BaseTranspiler implements Transpiler {
     /**
@@ -55,14 +56,16 @@ abstract class BaseTranspiler implements Transpiler {
 
     private String nextResult(String result, OperationToken token,
                               int spaces, boolean swap) {
-        return result + currentSpaces(token.getType(), spaces)
-            + stepResult(token, swap) + END_LINE;
+        return result
+            + spacesAsString(token.getType(), spaces)
+            + stepResult(token, swap)
+            + END_LINE;
     }
 
-    private String currentSpaces(OperationType type, int spaces) {
-        return Helper.spaces(
-            type.equals(OperationType.END) ? spaces - TAB : spaces
-        );
+    private String spacesAsString(OperationType type, int spaces) {
+        return Stream.generate(() -> " ")
+            .limit(type.equals(OperationType.END) ? spaces - TAB : spaces)
+            .collect(Collectors.joining());
     }
 
     private String stepResult(OperationToken token, boolean swap) {

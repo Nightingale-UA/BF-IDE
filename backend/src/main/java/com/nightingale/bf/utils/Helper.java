@@ -185,22 +185,4 @@ public class Helper {
         }
         return -1;
     }
-    //TODO: remove
-    public static Deque<String> tokenize(String code, String regex) {
-        Deque<String> tokens = new ArrayDeque<>();
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(code);
-        while (m.find()) {
-            tokens.add(m.group());
-        }
-        return tokens;
-    }
-
-    public static String spaces(int s) {
-        StringBuilder sb = new StringBuilder(s);
-        for (int i = 0; i < s; i++) {
-            sb.append(' ');
-        }
-        return sb.toString();
-    }
 }
