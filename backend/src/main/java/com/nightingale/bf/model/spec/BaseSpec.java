@@ -13,6 +13,6 @@ public abstract class BaseSpec implements LangSpec {
 
     @Override
     public String getOptimizationPattern() {
-        return getType().getUseless();
+        return getType().getOptimizationPattern();
     }
 }
