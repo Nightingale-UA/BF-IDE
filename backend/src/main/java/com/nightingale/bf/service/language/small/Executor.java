@@ -1,28 +1,26 @@
-package com.nightingale.bf.service.language.brain;
+package com.nightingale.bf.service.language.small;
 
-import com.nightingale.bf.service.Executor;
+import com.nightingale.bf.service.execute.BaseExecutor;
 import com.nightingale.bf.service.optimize.Optimizer;
 import com.nightingale.bf.utils.Helper;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Service("brainExecutor")
-public class ExecutorImpl implements Executor {
-    private final Optimizer brainOptimizer;
+@Service("smallExecutor")
+public class Executor extends BaseExecutor {
+    private final Optimizer smallOptimizer;
 
-    public ExecutorImpl(Optimizer brainOptimizer) {
-        this.brainOptimizer = brainOptimizer;
+    public Executor(Optimizer smallOptimizer) {
+        this.smallOptimizer = smallOptimizer;
     }
 
     @Override
     public String execute(String code, Deque<Integer> input) {
-        StringBuilder output = new StringBuilder();
-        List<Integer> tape = new LinkedList<>(Collections.singletonList(0));
-        String optimized = brainOptimizer.optimize(code);
+        List<Integer> tape = createTape(input);
+        String optimized = smallOptimizer.optimize(code);
         int pointer = 0;
 
         for (int i = 0; i < optimized.length(); i++) {
@@ -40,19 +38,8 @@ public class ExecutorImpl implements Executor {
                         pointer = 0;
                     }
                     break;
-                case '+':
-                    int temp = (tape.get(pointer) + 1) % (MAX_VALUE + 1);
-                    tape.set(pointer,temp);
-                    break;
-                case '-':
-                    temp = tape.get(pointer) - 1;
-                    tape.set(pointer, (temp < 0) ? MAX_VALUE : temp);
-                    break;
-                case ',':
-                    tape.set(pointer, input.pop());
-                    break;
-                case '.':
-                    output.append((char) tape.get(pointer).intValue());
+                case '*':
+                    tape.set(pointer, (tape.get(pointer) ^ 1));
                     break;
                 case '[':
                     if (tape.get(pointer) == 0) {
@@ -68,6 +55,8 @@ public class ExecutorImpl implements Executor {
                     break;
             }
         }
-        return output.toString();
+        return "Tape:\n" + tape.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }

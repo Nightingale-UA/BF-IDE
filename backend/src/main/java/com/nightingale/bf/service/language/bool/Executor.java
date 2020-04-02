@@ -1,29 +1,27 @@
 package com.nightingale.bf.service.language.bool;
 
-import com.nightingale.bf.service.Executor;
+import com.nightingale.bf.service.execute.BaseExecutor;
 import com.nightingale.bf.service.optimize.Optimizer;
 import com.nightingale.bf.utils.Helper;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 import static java.util.Optional.ofNullable;
 
 @Service("boolExecutor")
-public class ExecutorImpl implements Executor {
+public class Executor extends BaseExecutor {
     private final Optimizer boolOptimizer;
 
-    public ExecutorImpl(Optimizer boolOptimizer) {
+    public Executor(Optimizer boolOptimizer) {
         this.boolOptimizer = boolOptimizer;
     }
 
     @Override
     public String execute(String code, Deque<Integer> input) {
         StringBuilder output = new StringBuilder();
-        List<Integer> tape = new LinkedList<>(Collections.singletonList(0));
+        List<Integer> tape = createTape(input);
         String opt = boolOptimizer.optimize(code);
 
         int countIn = 0;

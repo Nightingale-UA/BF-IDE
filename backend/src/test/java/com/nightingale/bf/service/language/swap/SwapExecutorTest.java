@@ -1,7 +1,6 @@
 package com.nightingale.bf.service.language.swap;
 
 import com.nightingale.bf.model.language.swap.Spec;
-import com.nightingale.bf.service.Executor;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
@@ -10,7 +9,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwapExecutorTest {
-    private final Executor executor = new ExecutorImpl(new Optimizer(new Spec()));
+    private final com.nightingale.bf.service.execute.Executor executor = new Executor(new Optimizer(new Spec()));
 
     @Test
     public void shouldExecuteCorrectly() {

@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.language.swap;
 
-import com.nightingale.bf.service.Executor;
+import com.nightingale.bf.service.execute.BaseExecutor;
 import com.nightingale.bf.service.optimize.Optimizer;
 import com.nightingale.bf.utils.Helper;
 import org.springframework.stereotype.Service;
@@ -9,10 +9,10 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 @Service("swapExecutor")
-public class ExecutorImpl implements Executor {
+public class Executor extends BaseExecutor {
     private final Optimizer swapOptimizer;
 
-    public ExecutorImpl(Optimizer swapOptimizer) {
+    public Executor(Optimizer swapOptimizer) {
         this.swapOptimizer = swapOptimizer;
     }
 

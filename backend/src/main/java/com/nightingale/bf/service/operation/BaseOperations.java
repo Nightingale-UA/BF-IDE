@@ -3,7 +3,7 @@ package com.nightingale.bf.service.operation;
 import com.nightingale.bf.model.operation.OperationToken;
 import com.nightingale.bf.model.operation.OperationType;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
@@ -14,7 +14,7 @@ import static com.nightingale.bf.model.RegexConstants.OR;
 public abstract class BaseOperations implements Operations {
 
     @Override
-    public Collection<OperationToken> tokenize(String code) {
+    public List<OperationToken> tokenize(String code) {
         return Pattern.compile(String.join(OR, getOperations().values()))
             .matcher(code).results()
             .map(MatchResult::group)

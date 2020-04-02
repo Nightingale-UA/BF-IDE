@@ -1,12 +1,12 @@
 package com.nightingale.bf.service.language.ministring;
 
-import com.nightingale.bf.service.Executor;
+import com.nightingale.bf.service.execute.BaseExecutor;
 import org.springframework.stereotype.Service;
 
 import java.util.Deque;
 
 @Service("miniStringExecutor")
-public class ExecutorImpl implements Executor {
+public class Executor extends BaseExecutor {
     @Override
     public String execute(String code, Deque<Integer> input) {
         StringBuilder output = new StringBuilder();
