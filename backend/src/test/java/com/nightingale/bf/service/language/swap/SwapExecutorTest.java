@@ -27,6 +27,6 @@ public class SwapExecutorTest {
     @Test
     public void shouldExecuteCycle() {
         assertEquals("?", executor.execute(
-            "<..>>[.>]", new ArrayDeque<>(Collections.singletonList(0xFE))));
+            "<..>>>[.>>]<<[.<<]", new ArrayDeque<>(Collections.singletonList(0x2A))));
     }
 }
