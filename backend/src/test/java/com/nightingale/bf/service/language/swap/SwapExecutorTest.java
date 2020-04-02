@@ -9,7 +9,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwapExecutorTest {
-    private final com.nightingale.bf.service.execute.Executor executor = new Executor(new Optimizer(new Spec()));
+    private final Executor executor = new Executor(new Optimizer(new Spec()));
 
     @Test
     public void shouldExecuteCorrectly() {
@@ -22,5 +22,11 @@ public class SwapExecutorTest {
                         ".@..@>.@..@<.. // l .@..@>..@.@<.. // d " +
                         "..@.@>....@. // !",
                 new ArrayDeque<>(Collections.singletonList(0x80))));
+    }
+
+    @Test
+    public void shouldExecuteCycle() {
+        assertEquals("?", executor.execute(
+            "<..>>[.>]", new ArrayDeque<>(Collections.singletonList(0xFE))));
     }
 }
