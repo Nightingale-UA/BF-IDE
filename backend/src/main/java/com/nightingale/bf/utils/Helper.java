@@ -160,29 +160,4 @@ public class Helper {
 //        }
 //        return list;
 //    }
-
-    public static int closingBracket(String code, int index) {
-        int length = code.length();
-        int count = 0;
-        
-        for (int i = index + 1; i < length; i++) {
-            if (code.charAt(i) == ']') {
-                if (count == 0) return i;
-                else count--;
-            } else if (code.charAt(i) == '[') count++;
-        }
-        return -1;
-    }
-	
-	public static int openingBracket(String code, int index) {        
-        int count = 0;
-        
-        for (int i = index - 1; i >= 0; i--) {
-            if (code.charAt(i) == '[') {
-                if (count == 0) return i;
-                else count--;
-            } else if (code.charAt(i) == ']') count++;
-        }
-        return -1;
-    }
 }
