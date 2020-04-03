@@ -1,35 +1,20 @@
 package com.nightingale.bf.service.language.ministring;
 
-import com.nightingale.bf.service.execute.BaseExecutor;
+import com.nightingale.bf.service.execute.ByteExecutor;
 import com.nightingale.bf.service.operation.Operations;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 @Service("miniStringExecutor")
-public class Executor extends BaseExecutor {
-    @Override
-    public String execute(String code, Collection<Integer> input) {
-        StringBuilder output = new StringBuilder();
-        int value = 0;
+public class Executor extends ByteExecutor {
+    private final Operations miniStringOperations;
 
-        for (int i = 0; i < code.length(); i++) {
-            switch (code.charAt(i)) {
-                case '+':
-                    value = (value + 1) % (MAX_VALUE + 1);
-                    break;
-                case '.':
-                    output.append((char)value);
-                    break;
-                default:
-                    break;
-            }
-        }
-        return output.toString();
+    public Executor(Operations miniStringOperations) {
+        this.miniStringOperations = miniStringOperations;
     }
+
 
     @Override
     protected Operations getOperations() {
-        return null;
+        return miniStringOperations;
     }
 }

@@ -24,19 +24,6 @@ public abstract class BaseExecutor implements Executor {
         while (tokens.hasNext()) {
             var token = tokens.next();
             switch (token.getType()) {
-                case FLIP:
-                    tape.set(data.getPointer(), (tape.get(data.getPointer()) ^ 1));
-                    break;
-                case SWAP:
-                    if (data.getSwapReg() == -1) {
-                        data.setSwapReg(data.getPointer());
-                    } else {
-                        int temp = tape.get(data.getSwapReg());
-                        tape.set(data.getSwapReg(), tape.get(data.getPointer()));
-                        tape.set(data.getPointer(), temp);
-                        data.setSwapReg(-1);
-                    }
-                    break;
                 case RIGHT:
                     data.setPointer(data.getPointer() + token.getLength());
                     while (data.getPointer() >= tape.size()) {
@@ -51,28 +38,10 @@ public abstract class BaseExecutor implements Executor {
                     data.setPointer(pointer);
                     break;
                 case IN:
-                    if (data.getNextIn() == -1) {
-                        data.setNextIn(inputIterator.next());
-                    }
-                    tape.set(data.getPointer(), data.getNextIn() & 1);
-                    data.setNextIn(data.getNextIn() >> 1);
-                    data.setCountIn(data.getCountIn() + 1);
-                    if (data.getCountIn() == BITS_NUM) {
-                        data.setCountIn(0);
-                        data.setNextIn(-1);
-                    }
+                    in(inputIterator, tape, data);
                     break;
                 case OUT:
-                    var nextOut = data.getNextOut();
-                    var countOut = data.getCountOut();
-                    nextOut |= tape.get(data.getPointer()) << countOut;
-                    if (++countOut == BITS_NUM) {
-                        output.append((char) nextOut);
-                        countOut = 0;
-                        nextOut = 0;
-                    }
-                    data.setNextOut(nextOut);
-                    data.setCountOut(countOut);
+                    out(output, tape, data);
                     break;
                 case START:
                     if (tape.get(data.getPointer()) == 0) {
@@ -84,12 +53,26 @@ public abstract class BaseExecutor implements Executor {
                         openingBracket(tokens);
                     }
                     break;
+                default:
+                    delegateToChildren(token, tape, data);
             }
         }
         return output.toString();
     }
 
     protected abstract Operations getOperations();
+
+    protected abstract void delegateToChildren(OperationToken token,
+                                               List<Integer> tape,
+                                               ExecutionData data);
+
+    protected abstract void in(Iterator<Integer> input,
+                               List<Integer> tape,
+                               ExecutionData data);
+
+    protected abstract void out(StringBuilder output,
+                                List<Integer> tape,
+                                ExecutionData data);
 
     protected List<Integer> createTape(Collection<Integer> input) {
         return new LinkedList<>(Collections.singletonList(0));

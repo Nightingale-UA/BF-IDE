@@ -8,7 +8,7 @@ import java.util.ArrayDeque;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrainExecutorTest {
-    private final com.nightingale.bf.service.execute.Executor executor = new Executor(new Optimizer(new Spec()));
+    private final Executor executor = new Executor(new Operations(new Spec()));
 
     @Test
     public void shouldExecuteCorrectly() {

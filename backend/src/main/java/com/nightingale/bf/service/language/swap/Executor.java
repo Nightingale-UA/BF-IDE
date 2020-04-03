@@ -1,6 +1,9 @@
 package com.nightingale.bf.service.language.swap;
 
-import com.nightingale.bf.service.execute.BaseExecutor;
+import com.nightingale.bf.model.ExecutionData;
+import com.nightingale.bf.model.operation.OperationToken;
+import com.nightingale.bf.model.operation.OperationType;
+import com.nightingale.bf.service.execute.BitExecutor;
 import com.nightingale.bf.service.operation.Operations;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +16,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @Service("swapExecutor")
-public class Executor extends BaseExecutor {
+public class Executor extends BitExecutor {
     private final Operations swapOperations;
 
     public Executor(Operations swapOperations) {
@@ -41,5 +44,22 @@ public class Executor extends BaseExecutor {
             .map(shift -> input >> shift)
             .map(n -> n & 1)
             .boxed();
+    }
+
+    @Override
+    protected void delegateToChildren(OperationToken token,
+                                      List<Integer> tape,
+                                      ExecutionData data) {
+        super.delegateToChildren(token, tape, data);
+        if (token.getType() == OperationType.SWAP) {
+            if (data.getSwapReg() == -1) {
+                data.setSwapReg(data.getPointer());
+            } else {
+                var temp = tape.get(data.getSwapReg());
+                tape.set(data.getSwapReg(), tape.get(data.getPointer()));
+                tape.set(data.getPointer(), temp);
+                data.setSwapReg(-1);
+            }
+        }
     }
 }

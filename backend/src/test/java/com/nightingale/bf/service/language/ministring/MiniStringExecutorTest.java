@@ -1,5 +1,6 @@
 package com.nightingale.bf.service.language.ministring;
 
+import com.nightingale.bf.model.language.ministring.Spec;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
@@ -7,7 +8,7 @@ import java.util.ArrayDeque;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MiniStringExecutorTest {
-    private final com.nightingale.bf.service.execute.Executor executor = new Executor();
+    private final Executor executor = new Executor(new Operations(new Spec()));
 
     @Test
     public void shouldExecuteCorrectly() {
