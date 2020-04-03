@@ -19,8 +19,7 @@ public abstract class ByteExecutor extends BaseExecutor {
         switch (token.getType()) {
             case INCR:
                 tape.set(data.getPointer(),
-                    (tape.get(data.getPointer()) + token.getLength())
-                        % BYTE);
+                    (tape.get(data.getPointer()) + token.getLength()) % BYTE);
                 break;
             case DECR:
                 var temp = tape.get(data.getPointer()) - token.getLength();
