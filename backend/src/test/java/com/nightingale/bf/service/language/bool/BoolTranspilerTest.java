@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoolTranspilerTest {
     private final LangSpec spec = new Spec();
-    private final com.nightingale.bf.service.transpile.Transpiler transpiler = new Transpiler(
-        new Operations(spec), new Optimizer(spec));
+    private final Transpiler transpiler = new Transpiler(
+        new Operations(spec, new Optimizer(spec)));
 
     @Test
     public void shouldTranspileToHighLevel() {

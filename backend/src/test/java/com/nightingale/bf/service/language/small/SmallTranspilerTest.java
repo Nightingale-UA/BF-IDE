@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SmallTranspilerTest {
-    private final com.nightingale.bf.service.transpile.Transpiler transpiler = new Transpiler(
-        new Operations(new Spec()), new Optimizer(new Spec()));
+    private final Transpiler transpiler = new Transpiler(
+        new Operations(new Spec(), new Optimizer(new Spec())));
 
     @Test
     public void shouldTranspileToHighLevel() {

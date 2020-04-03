@@ -9,7 +9,8 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoolExecutorTest {
-    private final Executor executor = new Executor(new Operations(new Spec()));
+    private final Executor executor = new Executor(
+        new Operations(new Spec(), new Optimizer(new Spec())));
 
     @Test
     public void shouldExecuteCorrectly() {

@@ -33,13 +33,11 @@ abstract class BaseTranspiler implements Transpiler {
     public String toHighLevel(String code) {
         return internalToHighLevel(
             "",
-            getOperations().tokenize(getOptimizer().optimize(code)).iterator(),
+            getOperations().tokenize(code).iterator(),
             0, false);
     }
 
     protected abstract Operations getOperations();
-
-    protected abstract Optimizer getOptimizer();
 
     private String internalToHighLevel(String result, Iterator<OperationToken> iterator,
                                        int spaces, boolean swap) {

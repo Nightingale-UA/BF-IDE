@@ -2,6 +2,7 @@ package com.nightingale.bf.service.operation;
 
 import com.nightingale.bf.model.operation.OperationToken;
 import com.nightingale.bf.model.operation.OperationType;
+import com.nightingale.bf.service.optimize.Optimizer;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public abstract class BaseOperations implements Operations {
     @Override
     public List<OperationToken> tokenize(String code) {
         return Pattern.compile(String.join(OR, getOperations().values()))
-            .matcher(code).results()
+            .matcher(getOptimizer().optimize(code)).results()
             .map(MatchResult::group)
             .map(this::createToken)
             .collect(Collectors.toList());
@@ -34,4 +35,6 @@ public abstract class BaseOperations implements Operations {
     }
 
     protected abstract Map<OperationType, String> getOperations();
+
+    protected abstract Optimizer getOptimizer();
 }
