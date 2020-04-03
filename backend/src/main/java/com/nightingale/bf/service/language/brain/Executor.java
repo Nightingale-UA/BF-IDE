@@ -1,11 +1,13 @@
 package com.nightingale.bf.service.language.brain;
 
 import com.nightingale.bf.service.execute.BaseExecutor;
+import com.nightingale.bf.service.operation.Operations;
 import com.nightingale.bf.service.optimize.Optimizer;
 import com.nightingale.bf.utils.Helper;
 import org.springframework.stereotype.Service;
 
-import java.util.Deque;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @Service("brainExecutor")
@@ -17,9 +19,10 @@ public class Executor extends BaseExecutor {
     }
 
     @Override
-    public String execute(String code, Deque<Integer> input) {
+    public String execute(String code, Collection<Integer> input) {
         StringBuilder output = new StringBuilder();
         List<Integer> tape = createTape(input);
+        Iterator<Integer> inputIterator = inputIterator(input);
         String optimized = brainOptimizer.optimize(code);
         int pointer = 0;
 
@@ -47,7 +50,7 @@ public class Executor extends BaseExecutor {
                     tape.set(pointer, (temp < 0) ? MAX_VALUE : temp);
                     break;
                 case ',':
-                    tape.set(pointer, input.pop());
+                    tape.set(pointer, inputIterator.next());
                     break;
                 case '.':
                     output.append((char) tape.get(pointer).intValue());
@@ -67,5 +70,10 @@ public class Executor extends BaseExecutor {
             }
         }
         return output.toString();
+    }
+
+    @Override
+    protected Operations getOperations() {
+        return null;
     }
 }

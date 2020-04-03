@@ -9,24 +9,24 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwapExecutorTest {
-    private final Executor executor = new Executor(new Optimizer(new Spec()));
+    private final Executor executor = new Executor(new Operations(new Spec()));
 
     @Test
     public void shouldExecuteCorrectly() {
         assertEquals("Hello, World!", executor.execute(
-                "@>.@.@<..@.@>... // H .@..@<..@.@>.@. // e" +
-                        "@<.@..@>.@..@<.. // l .@..@>.@..@<.. // l " +
-                        ".@..@>.@.... // o @<..@.@>.@..@<.. // , " +
-                        "..@.@>..... //  .@.@<.@.@>.@... // W " +
-                        "@<.@..@>.@.... // o @<.@...@>..@.@<. // r " +
-                        ".@..@>.@..@<.. // l .@..@>..@.@<.. // d " +
-                        "..@.@>....@. // !",
+                "@>...@.@<..@.@>. // H @.@<.@.@>..@..@>. // e" +
+                        "..@..@<.@..@>. // l ..@..@<.@..@>. // l " +
+                        "@....@<.@..@>. // o ..@..@<.@.@>.. // , " +
+                        ".....@.@<.. //  @...@>.@.@<.@.@>. // W " +
+                        "@....@<.@..@>. // o .@.@<..@...@>. // r " +
+                        "..@..@<.@..@>. // l ..@.@<..@..@>. // d " +
+                        "@.@<....@.@>.. // !",
                 new ArrayDeque<>(Collections.singletonList(0x80))));
     }
 
     @Test
     public void shouldExecuteCycle() {
         assertEquals("?", executor.execute(
-            "<..>>>[.>>]<<[.<<]", new ArrayDeque<>(Collections.singletonList(0x2A))));
+            "[.>]<[.<]..", new ArrayDeque<>(Collections.singletonList(0xE0))));
     }
 }

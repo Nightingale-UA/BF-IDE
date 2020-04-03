@@ -1,14 +1,15 @@
 package com.nightingale.bf.service.language.ministring;
 
 import com.nightingale.bf.service.execute.BaseExecutor;
+import com.nightingale.bf.service.operation.Operations;
 import org.springframework.stereotype.Service;
 
-import java.util.Deque;
+import java.util.Collection;
 
 @Service("miniStringExecutor")
 public class Executor extends BaseExecutor {
     @Override
-    public String execute(String code, Deque<Integer> input) {
+    public String execute(String code, Collection<Integer> input) {
         StringBuilder output = new StringBuilder();
         int value = 0;
 
@@ -25,5 +26,10 @@ public class Executor extends BaseExecutor {
             }
         }
         return output.toString();
+    }
+
+    @Override
+    protected Operations getOperations() {
+        return null;
     }
 }

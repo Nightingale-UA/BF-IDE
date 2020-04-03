@@ -1,94 +1,45 @@
 package com.nightingale.bf.service.language.swap;
 
 import com.nightingale.bf.service.execute.BaseExecutor;
-import com.nightingale.bf.service.optimize.Optimizer;
-import com.nightingale.bf.utils.Helper;
+import com.nightingale.bf.service.operation.Operations;
 import org.springframework.stereotype.Service;
 
-import java.util.Deque;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Service("swapExecutor")
 public class Executor extends BaseExecutor {
-    private final Optimizer swapOptimizer;
+    private final Operations swapOperations;
 
-    public Executor(Optimizer swapOptimizer) {
-        this.swapOptimizer = swapOptimizer;
+    public Executor(Operations swapOperations) {
+        this.swapOperations = swapOperations;
     }
 
     @Override
-    public String execute(String code, Deque<Integer> input) {
-        StringBuilder output = new StringBuilder();
-        int size = input.size() * BITS_NUM;
-        LinkedList<Integer> tape = new LinkedList<>();
+    protected Operations getOperations() {
+        return swapOperations;
+    }
 
-        int count = 0;
-        int next = 0;
-        for (int i = 0; i < size; i++) {
-            if (count == 0) {
-                next = input.getLast();
-            }
-            tape.addFirst(next & 1);
-            next >>= 1;
-            count++;
-            if (count == BITS_NUM) {
-                count = 0;
-                next = 0;
-            }
-        }
+    protected List<Integer> createTape(Collection<Integer> input) {
+        return input.stream()
+            .flatMap(this::intToBits)
+            .collect(Collectors.collectingAndThen(
+                Collectors.toCollection(LinkedList::new),
+                list -> {
+                    Collections.reverse(list);
+                    return list;
+                }));
+    }
 
-        String opt = swapOptimizer.optimize(code);
-        int swapReg = -1;
-        int pointer = 0;
-        int length = opt.length();
-
-        for (int i = 0; i < length; i++) {
-            switch (opt.charAt(i)) {
-                case '@':
-                    if (swapReg == -1) swapReg = pointer;
-                    else {
-                        int temp = tape.get(swapReg);
-                        tape.set(swapReg, tape.get(pointer));
-                        tape.set(pointer, temp);
-                        swapReg = -1;
-                    }
-                    break;
-                case '>':
-                    pointer++;
-                    if (pointer == tape.size()) {
-                        tape.add(0);
-                    }
-                    break;
-                case '<':
-                    pointer--;
-                    if (pointer == -1) {
-                        tape.add(0,0);
-                        pointer = 0;
-                    }
-                    break;
-                case '.':
-                    next <<= 1;
-                    next += tape.get(pointer);
-                    if (++count == BITS_NUM) {
-                        output.append((char) next);
-                        count = 0;
-                        next = 0;
-                    }
-                    break;
-                case '[':
-                    if (tape.get(pointer) == 0) {
-                        i = Helper.closingBracket(opt,i);
-                    }
-                    break;
-                case ']':
-                    if (tape.get(pointer) != 0) {
-                        i = Helper.openingBracket(opt,i);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-        return output.toString();
+    private Stream<Integer> intToBits(int input) {
+        return IntStream.range(0, BITS_NUM)
+            .map(shift -> input >> shift)
+            .map(n -> n & 1)
+            .boxed();
     }
 }

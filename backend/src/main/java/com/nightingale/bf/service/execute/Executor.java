@@ -1,6 +1,6 @@
 package com.nightingale.bf.service.execute;
 
-import java.util.Deque;
+import java.util.Collection;
 
 public interface Executor {
     //TODO: move constants somewhere
@@ -19,5 +19,5 @@ public interface Executor {
      * @param input Deque
      * @return String execution result
      */
-    String execute(String code, Deque<Integer> input);
+    String execute(String code, Collection<Integer> input);
 }
