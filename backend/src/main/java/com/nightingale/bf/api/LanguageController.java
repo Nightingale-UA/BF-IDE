@@ -28,6 +28,30 @@ public class LanguageController {
         );
     }
 
+    @PostMapping("/{language}/build-source")
+    public LanguageResponse buildSource(@PathVariable String language,
+                                        @RequestBody LanguageRequest request) {
+        return new LanguageResponse(
+            findService(language).fromExecutionResult(request.getCode())
+        );
+    }
+
+    @PostMapping("/{language}/transpile-to-bf")
+    public LanguageResponse transpileTo(@PathVariable String language,
+                                        @RequestBody LanguageRequest request) {
+        return new LanguageResponse(
+            findService(language).fromHighLevel(request.getCode())
+        );
+    }
+
+    @PostMapping("/{language}/transpile-from-bf")
+    public LanguageResponse transpileFrom(@PathVariable String language,
+                                        @RequestBody LanguageRequest request) {
+        return new LanguageResponse(
+            findService(language).toHighLevel(request.getCode())
+        );
+    }
+
     private LangService findService(String language) {
         return services.stream()
             .filter(service -> service.getLangSpec().getKey().equals(language))
