@@ -100,4 +100,99 @@ public class LanguageControllerTest {
                     Collections.emptyList()),
                 Map.class).get("message"));
     }
+
+    @Test
+    public void shouldTranspileFromBrain() {
+        assertEquals(
+            "*p += 1\n" +
+                "while (*p) {\n" +
+                "    *p -= 2\n" +
+                "    p += 1\n" +
+                "    *p -= 1\n" +
+                "    while (*p) {\n" +
+                "        p += 2\n" +
+                "        *p += 1\n" +
+                "        p += 1\n" +
+                "        *p -= 5\n" +
+                "        p -= 2\n" +
+                "    }\n" +
+                "    p -= 1\n" +
+                "    *p -= 2\n" +
+                "    p -= 1\n" +
+                "    *p -= 3\n" +
+                "}\n",
+            restTemplate.postForObject(
+                "http://localhost:" + port + "/api/brain/transpile-from-bf",
+                new LanguageRequest(
+                    "+[-->-[>>+>-----<<]<--<---]",
+                    Collections.emptyList()),
+                LanguageResponse.class).getResult()
+        );
+    }
+
+    @Test
+    public void shouldTranspileFromBool() {
+        assertEquals(
+            "printBit(*p)\n" +
+                "printBit(*p)\n" +
+                "printBit(*p)\n" +
+                "*p ^= 1\n" +
+                "printBit(*p)\n" +
+                "*p ^= 1\n",
+            restTemplate.postForObject(
+                "http://localhost:" + port + "/api/bool/transpile-from-bf",
+                new LanguageRequest(
+                    ";;;+;+",
+                    Collections.emptyList()),
+                LanguageResponse.class).getResult()
+        );
+    }
+
+    @Test
+    public void shouldTranspileFromSwap() {
+        assertEquals(
+            "p += 2\n" +
+                "printBit(*p)\n" +
+                "printBit(*p)\n" +
+                "storeBit(*p)\n" +
+                "printBit(*p)\n" +
+                "*p = getStoredBit()\n",
+            restTemplate.postForObject(
+                "http://localhost:" + port + "/api/swap/transpile-from-bf",
+                new LanguageRequest(
+                    ">>..@.@",
+                    Collections.emptyList()),
+                LanguageResponse.class).getResult()
+        );
+    }
+
+    @Test
+    public void shouldTranspileFromSmall() {
+        assertEquals(
+            "*p ^= 1\n" +
+                "p += 2\n" +
+                "*p ^= 1\n",
+            restTemplate.postForObject(
+                "http://localhost:" + port + "/api/small/transpile-from-bf",
+                new LanguageRequest(
+                    "*>>*",
+                    Collections.emptyList()),
+                LanguageResponse.class).getResult()
+        );
+    }
+
+    @Test
+    public void shouldTranspileFromMiniString() {
+        assertEquals(
+            "*p += 7\n" +
+                "printChar(*p)\n" +
+                "*p += 2\n",
+            restTemplate.postForObject(
+                "http://localhost:" + port + "/api/mini-string/transpile-from-bf",
+                new LanguageRequest(
+                    "+++++++.++",
+                    Collections.emptyList()),
+                LanguageResponse.class).getResult()
+        );
+    }
 }
